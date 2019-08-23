@@ -106,6 +106,7 @@ public class UserLoginManager {
             userName = "";
             userHeadImage = "";
             access_token = "";
+            header=null;
         }
     }
 }
