@@ -24,28 +24,28 @@ public class UserLoginManager {
     private String userHeadImage ;
 
     public String getUserName() {
-        if (userName==null){
+        if (userName==null||StringUtils.isEmpty(userName)){
             userName = SharedPreferenceUtil.read(SHARED_USER,USERNAME,"");
         }
         return userName;
     }
 
     public String getUserHeadImage() {
-        if (userHeadImage==null){
+        if (userHeadImage==null||StringUtils.isEmpty(userHeadImage)){
             userHeadImage = SharedPreferenceUtil.read(SHARED_USER,USERHEADIMG,"");
         }
         return userHeadImage;
     }
 
     public String getUid() {
-        if (uid==null){
+        if (uid==null||StringUtils.isEmpty(uid)){
             uid=  SharedPreferenceUtil.read(SHARED_USER,USERID,"");
         }
         return uid;
     }
 
     public String getAccess_token() {
-        if (access_token==null){
+        if (access_token==null||StringUtils.isEmpty(access_token)){
             access_token=  SharedPreferenceUtil.read(SHARED_USER,ACCESSTOKEN,"");
         }
         return access_token;
