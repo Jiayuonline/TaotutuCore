@@ -102,6 +102,10 @@ public class UserLoginManager {
             SharedPreferenceUtil.write(SHARED_USER,USERNAME,"");
             SharedPreferenceUtil.write(SHARED_USER,USERHEADIMG,"");
             SharedPreferenceUtil.write(SHARED_USER,ACCESSTOKEN,"");
+            uid = "";
+            userName = "";
+            userHeadImage = "";
+            access_token = "";
         }
     }
 }
