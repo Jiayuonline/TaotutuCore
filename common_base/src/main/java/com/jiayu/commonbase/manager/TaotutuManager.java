@@ -34,6 +34,7 @@ public class TaotutuManager {
     static String imei;
     static String mobile;
     static String nickname;
+    static String aliasName;
 
 
 
@@ -44,6 +45,15 @@ public class TaotutuManager {
         RetrofitClient.getInstance(context);
         SharedPreferenceUtil.init(context);
         ExceptionHandler.init(context);
+    }
+
+
+    public static String getAliasName() {
+        return aliasName;
+    }
+
+    public static void setAliasName(String aliasName) {
+        TaotutuManager.aliasName = aliasName;
     }
 
     public static String getUniqueCode() {

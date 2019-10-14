@@ -45,7 +45,6 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
 
                 param = TaotutuManager. getParam(map);
                 Log.d("test", GsonUtils.toJson(param));
-
             }
         });
 
