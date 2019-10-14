@@ -15,6 +15,28 @@ public class TaotutuManager {
     static Context context;
     static String accessSecret;
     static String accessKey;
+    /**
+     * 唯一设备号
+     */
+    static String uniqueCode;
+    /**
+     * 来源
+     */
+    static String channel;
+    /***
+     *  类型-android ios
+     */
+    static String platform;
+    /***
+     * 鉴权token
+     */
+    static String access_token;
+    static String imei;
+    static String mobile;
+    static String nickname;
+
+
+
 
     public static void  init(Context c){
 
@@ -24,8 +46,61 @@ public class TaotutuManager {
         ExceptionHandler.init(context);
     }
 
+    public static String getUniqueCode() {
+        return uniqueCode;
+    }
 
+    public static void setUniqueCode(String uniqueCode) {
+        TaotutuManager.uniqueCode = uniqueCode;
+    }
 
+    public static String getChannel() {
+        return channel;
+    }
+
+    public static void setChannel(String channel) {
+        TaotutuManager.channel = channel;
+    }
+
+    public static String getPlatform() {
+        return platform;
+    }
+
+    public static void setPlatform(String platform) {
+        TaotutuManager.platform = platform;
+    }
+
+    public static String getAccess_token() {
+        return access_token;
+    }
+
+    public static void setAccess_token(String access_token) {
+        TaotutuManager.access_token = access_token;
+    }
+
+    public static String getImei() {
+        return imei;
+    }
+
+    public static void setImei(String imei) {
+        TaotutuManager.imei = imei;
+    }
+
+    public static String getMobile() {
+        return mobile;
+    }
+
+    public static void setMobile(String mobile) {
+        TaotutuManager.mobile = mobile;
+    }
+
+    public static String getNickname() {
+        return nickname;
+    }
+
+    public static void setNickname(String nickname) {
+        TaotutuManager.nickname = nickname;
+    }
 
     public static String getAccessSecret() {
         return accessSecret;
@@ -101,7 +176,6 @@ public class TaotutuManager {
         String sign = MD5Encode(sb.toString(),"");
         sign =  MD5Encode(sign,"");
         sign =  MD5Encode(sign,"");
-
         params.put("sign",sign);
 
         return params;

@@ -70,6 +70,7 @@ public class ExceptionHandler {
         } else {
             errmsg = "网络连接异常,请稍后重试";
         }
+
         Toast.makeText(context, errmsg, Toast.LENGTH_LONG).show();
     }
 
