@@ -1,14 +1,11 @@
 package com.jiayu.online.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.jiayu.commonbase.base.BaseMVPActivity;
 import com.jiayu.commonbase.manager.TaotutuManager;
-import com.jiayu.commonbase.util.DeviceUtil;
 import com.jiayu.commonbase.util.GsonUtils;
 
 import java.util.HashMap;
@@ -40,8 +37,8 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
                 HashMap<String,String> map = new HashMap<>();
 //                map.put("pageNo","1");
                 map.put("uniqueCode", TaotutuManager.getUniqueCode());
-                map.put("channel", "taotutu");
-                map.put("platform", "android");
+                map.put("channel", TaotutuManager.getChannel());
+                map.put("platform", TaotutuManager.getPlatform());
 
                 param = TaotutuManager. getParam(map);
                 Log.d("test", GsonUtils.toJson(param));
@@ -52,7 +49,17 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
         btnLogin .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.login(param);
+                TaotutuManager.authLogin(new TaotutuManager.OnAuthLoginCallback() {
+                    @Override
+                    public void onSuccess(String token) {
+                        Log.d("OnAuthLoginCallback", "onSuccess: "+token);
+                    }
+
+                    @Override
+                    public void onFailed(Throwable e) {
+
+                    }
+                });
             }
         });
     }

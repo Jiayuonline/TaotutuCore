@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.jiayu.commonbase.http.ExceptionHandler;
 import com.jiayu.commonbase.http.RetrofitClient;
+import com.jiayu.commonbase.presenter.AuthPresenter;
 import com.jiayu.commonbase.util.SharedPreferenceUtil;
+import com.jiayu.commonbase.util.StringUtils;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -37,8 +39,6 @@ public class TaotutuManager {
     static String aliasName;
 
 
-
-
     public static void  init(Context c){
 
         context  = c;
@@ -49,7 +49,7 @@ public class TaotutuManager {
 
 
     public static String getAliasName() {
-        return aliasName;
+        return StringUtils.isEmpty(aliasName)?"":aliasName;
     }
 
     public static void setAliasName(String aliasName) {
@@ -57,7 +57,8 @@ public class TaotutuManager {
     }
 
     public static String getUniqueCode() {
-        return uniqueCode;
+        return StringUtils.isEmpty(uniqueCode)?"":uniqueCode;
+
     }
 
     public static void setUniqueCode(String uniqueCode) {
@@ -65,7 +66,8 @@ public class TaotutuManager {
     }
 
     public static String getChannel() {
-        return channel;
+        return StringUtils.isEmpty(channel)?"":channel;
+
     }
 
     public static void setChannel(String channel) {
@@ -73,7 +75,8 @@ public class TaotutuManager {
     }
 
     public static String getPlatform() {
-        return platform;
+        return StringUtils.isEmpty(platform)?"":platform;
+
     }
 
     public static void setPlatform(String platform) {
@@ -89,7 +92,8 @@ public class TaotutuManager {
     }
 
     public static String getImei() {
-        return imei;
+        return StringUtils.isEmpty(imei)?"":imei;
+
     }
 
     public static void setImei(String imei) {
@@ -97,7 +101,8 @@ public class TaotutuManager {
     }
 
     public static String getMobile() {
-        return mobile;
+        return StringUtils.isEmpty(mobile)?"":mobile;
+
     }
 
     public static void setMobile(String mobile) {
@@ -105,7 +110,7 @@ public class TaotutuManager {
     }
 
     public static String getNickname() {
-        return nickname;
+        return StringUtils.isEmpty(nickname)?"":nickname;
     }
 
     public static void setNickname(String nickname) {
@@ -189,5 +194,26 @@ public class TaotutuManager {
         params.put("sign",sign);
 
         return params;
+    }
+
+    public static void authLogin(final OnAuthLoginCallback authCallback){
+        AuthPresenter authPresenter = new AuthPresenter();
+        authPresenter.authLogin(new AuthPresenter.OnLoginCallback() {
+            @Override
+            public void onSuccess(String token) {
+                TaotutuManager.setAccess_token(token);
+                authCallback.onSuccess(token);
+            }
+
+            @Override
+            public void onFailed(Throwable e) {
+                authCallback.onFailed(e);
+            }
+        });
+    }
+
+    public interface OnAuthLoginCallback{
+        void onSuccess(String token);
+        void onFailed(Throwable e);
     }
 }
