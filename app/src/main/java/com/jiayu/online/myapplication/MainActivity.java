@@ -36,20 +36,22 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
 
                 HashMap<String,String> map = new HashMap<>();
 //                map.put("pageNo","1");
-                map.put("uniqueCode", TaotutuManager.getUniqueCode());
-                map.put("channel", TaotutuManager.getChannel());
-                map.put("platform", TaotutuManager.getPlatform());
+                map.put("uniqueCode", TaotutuManager.getInstance().getUniqueCode());
+                map.put("channel", TaotutuManager.getInstance().getChannel());
+                map.put("platform", TaotutuManager.getInstance().getPlatform());
 
-                param = TaotutuManager. getParam(map);
+                param = TaotutuManager.getInstance(). getParam(map);
                 Log.d("test", GsonUtils.toJson(param));
             }
         });
+
+
 
         Button btnLogin = findViewById(R.id.btn_login);
         btnLogin .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TaotutuManager.authLogin(new TaotutuManager.OnAuthLoginCallback() {
+                TaotutuManager.getInstance().authLogin(new TaotutuManager.OnAuthLoginCallback() {
                     @Override
                     public void onSuccess(String token) {
                         Log.d("OnAuthLoginCallback", "onSuccess: "+token);

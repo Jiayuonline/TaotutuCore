@@ -23,16 +23,16 @@ public class AuthPresenter extends BasePresenter<AuthContract.View> implements A
     public void authLogin(final OnLoginCallback callback) {
         HashMap<String ,String> param = new HashMap<>();
 
-        param.put("uniqueCode", TaotutuManager.getUniqueCode());
-        param.put("channel", TaotutuManager.getChannel());
-        param.put("platform", TaotutuManager.getPlatform());
-        param.put("aliasName",TaotutuManager.getAliasName());
-        param.put("aliasName",TaotutuManager.getAliasName());
-        param.put("imei",TaotutuManager.getImei());
-        param.put("mobile",TaotutuManager.getMobile());
-        param.put("nickname",TaotutuManager.getNickname());
+        param.put("uniqueCode", TaotutuManager.getInstance().getUniqueCode());
+        param.put("channel", TaotutuManager.getInstance().getChannel());
+        param.put("platform", TaotutuManager.getInstance().getPlatform());
+        param.put("aliasName",TaotutuManager.getInstance().getAliasName());
+        param.put("aliasName",TaotutuManager.getInstance().getAliasName());
+        param.put("imei",TaotutuManager.getInstance().getImei());
+        param.put("mobile",TaotutuManager.getInstance().getMobile());
+        param.put("nickname",TaotutuManager.getInstance().getNickname());
 
-        HashMap<String ,String> map = TaotutuManager.getParam(param);
+        HashMap<String ,String> map = TaotutuManager.getInstance().getParam(param);
 
         Gson gson = new Gson();
         String json =  gson.toJson(map,new TypeToken<HashMap<String, String>>() {

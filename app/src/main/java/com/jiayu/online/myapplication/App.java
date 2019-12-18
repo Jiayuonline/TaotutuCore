@@ -8,12 +8,12 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        TaotutuManager.setAccessKey(" ");
-        TaotutuManager.setAccessSecret(" ");
-        TaotutuManager.setChannel("taotutu");
-        TaotutuManager.setPlatform("andorid");
-        TaotutuManager.setUniqueCode("123");
+        TaotutuManager.getInstance().setAccessKey(" ");
+        TaotutuManager.getInstance().setAccessSecret(" ");
+        TaotutuManager.getInstance().setChannel("taotutu");
+        TaotutuManager.getInstance().setPlatform("andorid");
+        TaotutuManager.getInstance().setUniqueCode("123");
 
-        TaotutuManager.init(this);
+        TaotutuManager.getInstance().init(this);
     }
 }
