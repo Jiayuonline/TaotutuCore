@@ -38,6 +38,16 @@ public class TaotutuManager {
     static String nickname;
     static String aliasName;
 
+    TaotutuManager taotutuManager;
+
+    public TaotutuManager getInstance(){
+        if (taotutuManager == null) {
+            taotutuManager = new TaotutuManager();
+        }
+        return  taotutuManager;
+    }
+
+
 
     public static void  init(Context c){
 
@@ -173,8 +183,6 @@ public class TaotutuManager {
 
         String timestamp = String.valueOf(System.currentTimeMillis());
 
-//          accessSecret = "56cbaf232dbd48d9b6b7b88760b5784e";
-//          accessKey = "7b51de35ba4f465a81c48af594df38e1";
 
         params.put("timestamp",timestamp);
         params.put("accessSecret",accessSecret);
